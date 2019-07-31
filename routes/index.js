@@ -44,9 +44,11 @@ exports = module.exports = function (app) {
 	app.get('/lineaProd/:productCat', routes.views.productCat);
 	app.get('/lineaProd/:productCat/:tipo', routes.views.productCat);
 	app.get('/products/product/:product', routes.views.product);
-	app.get('/products/:tipo', routes.views.products);
+	app.get('/gladen/:tipo', routes.views.gladen);
 	app.get('/vendedores', routes.views.vendedores);
 	app.all('/contact', routes.views.contact);
+	app.get('/gladen', routes.views.gladen);
+	
 	
 
 

@@ -21,7 +21,8 @@ exports.initLocals = function (req, res, next) {
 	res.locals.navLinks = [
 		{ label: 'Home', key: 'home', href: '/' },
 		{ label: 'Líneas', key: 'linea', href: '/lineaProd' },
-		{ label: 'Productos', key: 'productos', href: '/products' },
+		{ label: 'GLADEN', key: 'gladen', href:'/gladen' },
+		//{ label: 'Productos', key: 'productos', href: '/products' },
 		// { label: 'Lo nuevo', key: 'gallery', href: '/gallery' },
 		{ label: 'Instalaciones', key: 'blog', href: '/blog' },
 		{ label: 'Dealers', key: 'vendedores', href: '/vendedores' },

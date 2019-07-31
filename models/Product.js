@@ -25,6 +25,7 @@ Product.add({
     publilshedDate: { type:Date, default:Date.now},
     tipos: { type: Types.Relationship, ref: 'ProductType'},
     linea: { type: Types.Relationship, ref: 'Categoria'},
+    marca:{ type: Types.Relationship, ref: 'Owner'},
     pdfInstall:{ type:Types.File, storage: storage },
     
   

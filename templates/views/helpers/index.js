@@ -206,8 +206,12 @@ module.exports = function () {
 		return ('/lineaprod/' + categoriaSlug);
 	};
 
-	_helpers.tipoUrl = function (tipoKey) {
+/* 	_helpers.tipoUrl = function (tipoKey) {
 		return ('/products/' + tipoKey );
+	};
+ */
+	_helpers.tipoUrl = function (tipoKey,marca) {
+		return ('/'+ marca + '/' + tipoKey );
 	};
 
 	_helpers.tipoCatUrl = function (categoriaSlug, tipo) {

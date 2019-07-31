@@ -38,12 +38,24 @@
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav pull-right">
-                    {{# each navLinks}}
-                    <li {{#ifeq ../section key}}class="active" {{else}}{{/ifeq}}>
-                        <a href="{{ href }}">{{ label }}</a>
-                    </li>
-                    {{/each}}
-   
+                        {{# each navLinks}}
+                            {{#if href}}
+                                <li {{#ifeq ../section key}}class="active" {{else}}{{/ifeq}}>
+                                    <a href="{{ href }}">{{ label }}</a>
+                                </li>
+                            {{else}}
+                                <li class="dropdown{{#ifeq ../../section key}} active{{/ifeq}}">
+                                    <a href="#" class="dropdown toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">{{ label }} <span class="caret"></span></a>
+                                    <ul class="dropdown-menu">
+                                        {{#each pages}}
+                                            <li {{#ifeq ../../../subsection subkey}}class="active"{{/ifeq}}>
+                                                <a href="{{ href }}">{{ label }}</a>
+                                            </li>
+                                        {{/each}}
+                                    </ul>
+                                </li>   
+                            {{/if}} 
+                        {{/each}}
                 </ul>
             </div>
             <!--/.nav-collapse -->
