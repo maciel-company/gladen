@@ -19,6 +19,7 @@ exports = module.exports = function (req, res) {
             prod:[],
             tipo: [],
             vmarca:[],
+            filtrado:[],
             
     };
     
@@ -37,6 +38,11 @@ exports = module.exports = function (req, res) {
                 }   
             
                 locals.data.tipo = _uniq(_map(locals.data.prod, getTipo)); 
+             
+             
+             
+                locals.data.filtrado = _filter(locals.data.prod,function(o){return locals.data.prod.key==locals.filters.tipoProd});
+                console.log("filtrado",locals.data.filtrado );
                // console.log('tipo',locals.data.tipo);
                 /* if(locals.filters.tipoProd != null){
                     function getProd(vtipo){
