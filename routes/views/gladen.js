@@ -9,45 +9,60 @@ exports = module.exports = function (req, res) {
 	var view = new keystone.View(req, res);
 	var locals = res.locals;
 
-	
+    locals.filters = {
+        tipoProd: req.params.tipo,
+    }; 
+
 	locals.section = 'gladen';
     //set variables
     locals.data = {
             prod:[],
             tipo: [],
             vmarca:[],
+            
     };
-    //Set filter
-      locals.filters = {
-        tipoProd: req.params.tipo,
-    }; 
+    
 
     view.on('init', function (next) {
         keystone.list('Owner').model.findOne().where('slug', 'gladen').exec(function (err1, re) {
             if (err1) next(err1);
             locals.data.vmarca = re;
             // query de los productos para la tipo
-            keystone.list('Product').model.find().where('marca',locals.data.vmarca).populate('tipos').exec(function(err,results){
+            (keystone.list('Product').model.find().where('marca',locals.data.vmarca)).populate('tipos').exec(function(err,results){
                 if (err) next(err);
                 locals.data.prod = results;
+               
                 function getTipo(producto){
                     return producto.tipos.key;
-                }    
-            locals.data.tipo = _uniq(_map(locals.data.prod, getTipo));
-            //console.log('tipo',locals.data.tipo);
-            next();
-            });
-        });
-        if(locals.filters.tipoProd != null){
-            keystone.list('ProductType').model.findOne().where('key', locals.filters.tipoProd).exec(function (err1, re) {
-                if (err1) next(err1);
-                locals.data.vtipo = re;
-                console.log("filter",_filter(getTipo(locals.data.prod),re));
-
+                }   
+            
+                locals.data.tipo = _uniq(_map(locals.data.prod, getTipo)); 
+               // console.log('tipo',locals.data.tipo);
+                /* if(locals.filters.tipoProd != null){
+                    function getProd(vtipo){
+                        return producto.tipos.key === vtipo.key;
+                    }   
+                    console.log( _filter(locals.data.prod,getProd(locals.filters.tipoProd)));
+                } ;*/ 
+                  
+                
                 next();
-                });
-        }
+            });
+         
+            
+            
+        });
+        
+    
+          /*   keystone.list('ProductType').model.findOne().where('key', locals.filters.tipoProd).exec(function (err1, re) {
+                if (err1) next(err1);
+                locals.data.vtipo = re; */
+              
 
+             //   next();
+              
+        
+      
       
     });
 	// Render the view

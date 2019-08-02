@@ -210,8 +210,8 @@ module.exports = function () {
 		return ('/products/' + tipoKey );
 	};
  */
-	_helpers.tipoUrl = function (tipoKey,marca) {
-		return ('/'+ marca + '/' + tipoKey );
+	_helpers.tipoUrl = function (tipoKey) {
+		return ('/gladen/' + tipoKey );
 	};
 
 	_helpers.tipoCatUrl = function (categoriaSlug, tipo) {

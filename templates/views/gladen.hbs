@@ -2,22 +2,23 @@
 <div class="container">
         <div class="row thin">
             <h2>Gladen</h2>
-                <div class="filter" >
+               <div class="filter" >
                     {{#if data.tipo}}
-                        <a class="btn btn-filter" href="/gladen">All</a>
+                {{!--         <a class="btn btn-filter" href="/gladen">All</a>
                     {{else}}
                         <a class="btn btn-filter btn-enable" href="/gladen">All</a>
                     {{/if}}   
-                    {{#if data.tipo}}
+                    {{#if data.tipo}} --}}
                         {{#each data.tipo}}
-                            {{#ifeq ../data.vtipo.key key}}
-                                <a class="btn btn-filter btn-enable btn-text" href="{{tipoUrl this 'gladen'}}">{{this}}</a>
+                            <a class="btn btn-filter btn-enable btn-text" href="{{tipoUrl this}}">{{this}}</a>
+                            {{!-- {{#ifeq ../data.vtipo.key key}}
+                                <a class="btn btn-filter btn-enable btn-text" href="">{{this}}</a>
                             {{else}}
-                                <a class="btn btn-filter btn-text" href="{{tipoUrl this 'gladen'}}">{{this}}</a>
-                            {{/ifeq}}
+                                <a class="btn btn-filter btn-text" href="">{{this}}</a>
+                            {{/ifeq}} --}}
                              
                         {{/each}}
-                    {{/if}}
+                    {{/if}} 
                 </div>
        </div>
        <div class="row">
@@ -32,7 +33,7 @@
                         </div>
                     {{/each}}
                 {{/if}}
-            </div>
+            </div> 
         </div>
 </div> 
      
